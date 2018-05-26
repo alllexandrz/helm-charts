@@ -1,0 +1,27 @@
+image: flink
+imageTag: alpine
+imagePullPolicy: Always
+
+resources:
+  jobmanager:
+    limits:
+      cpu: 10m
+      memory: 256Mi
+    requests:
+      cpu: 10m
+      memory: 256Mi
+  taskmanager:
+    limits:
+      memory: 256Mi
+    requests:
+      memory: 256Mi
+
+service:
+  annotations: {}
+  clusterIP: ""
+  externalIPs: []
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  type: ClusterIP
+
+

@@ -1,0 +1,29 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: taskmanager-controller
+spec:
+  replicas: 1
+  selector:
+    component: taskmanager
+  template:
+    metadata:
+      labels:
+        component: taskmanager
+    spec:
+      containers:
+        - name: taskmanager
+          image: {{ .Values.image }}:{{ .Values.imageTag }}
+          args: ["taskmanager", "jobmanager.rpc.address=jobmanager.flink.svc.cluster.local", "blob.server.port=50101"]
+          ports:
+            - containerPort: 6121
+            - containerPort: 6122
+            - containerPort: 50101
+          resources:
+            limits:
+            	cpu: {{ .Values.resources.taskmanager.limits.cpu }}
+	        memory: {{ .Values.resources.taskmanager.limits.memory }}
+            requests:
+                cpu: {{ .Values.resources.taskmanager.requests.cpu }}
+                memory: {{ .Values.resources.taskmanager.requests.memory }}
+

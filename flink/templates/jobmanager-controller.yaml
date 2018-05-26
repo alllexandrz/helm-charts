@@ -1,0 +1,28 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: jobmanager-controller
+spec:
+  replicas: 1
+  selector:
+    component: jobmanager
+  template:
+    metadata:
+      labels:
+        component: jobmanager
+    spec:
+      containers:
+        - name: jobmanager
+          image: {{ .Values.image }}:{{ .Values.imageTag }}
+          args: ["jobmanager", "jobmanager.rpc.address=jobmanager.flink.svc.cluster.local", "blob.server.port=50101"]
+          ports:
+            - containerPort: 6123
+            - containerPort: 8081
+            - containerPort: 50101
+          resources:
+              limits:
+            	cpu: {{ .Values.resources.jobmanager.limits.cpu }}
+	        memory: {{ .Values.resources.jobmanager.limits.memory }}
+              requests:
+                cpu: {{ .Values.resources.jobmanager.requests.cpu }}
+                memory: {{ .Values.resources.jobmanager.requests.memory }}
