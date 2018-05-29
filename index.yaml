@@ -1,7 +1,23 @@
 apiVersion: v1
 entries:
+  flink:
+  - apiVersion: v1
+    created: 2018-05-29T16:28:10.8544778+03:00
+    description: Apache Flink
+    digest: a0f12d42c903568948d66d27fb569e740966522b73997c21f399c94dcd739d73
+    home: https://flink.apache.org
+    icon: https://flink.apache.org/img/logo/png/200/flink_squirrel_200_color.png
+    maintainers:
+    - email: alllexandr@gmail.com
+      name: Oleksandr Zaichenko
+    name: flink
+    sources:
+    - https://github.com/apache/flink
+    urls:
+    - http://127.0.0.1:8879/flink-1.4.0.tgz
+    version: 1.4.0
   nginx:
-  - created: 2018-05-29T16:21:20.3927751+03:00
+  - created: 2018-05-29T16:28:10.8554605+03:00
     description: A basic NGINX HTTP server
     digest: 8da14f74ce0a9719903576230a7804955816f6f9f1c0df13fcc8068f9976c35f
     home: https://github.com/kubernetes/helm
@@ -20,4 +36,4 @@ entries:
     urls:
     - http://127.0.0.1:8879/nginx-0.1.0.tgz
     version: 0.1.0
-generated: 2018-05-29T16:21:20.3917927+03:00
+generated: 2018-05-29T16:28:10.8534964+03:00
